@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/user/regist', \App\Livewire\Users\Registration::class)->name('regist');
     Route::get('/user/control', \App\Livewire\Users\Users::class)->name('control');
     Route::get('/user/{user}', \App\Livewire\Users\Profile::class)->name('profile');
-    Route::get('/peminjaman', \App\Livewire\Peminjaman::class)->name('peminjaman');
+    Route::get('/transaksi', \App\Livewire\Transaksi::class)->name('transaksi');
     Route::get('/pemberkasan', \App\Livewire\Pemberkasan::class)->name('pemberkasan');
     Route::get('/', \App\Livewire\Dashboard::class)->name('dashboard');
 });

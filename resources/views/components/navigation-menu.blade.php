@@ -1,15 +1,15 @@
 <nav class="nav flex-column" id="sidebarMenu">
-      <x-nav-link :active="request()->routeIs('dashboard')" href="{{route('dashboard')}}">
-        <i class="bi bi-speedometer2 me-2"></i> Dashboard
-      </x-nav-link>
-      <hr style="margin: 0">  
-      <x-nav-link :active="request()->routeIs('peminjaman')" href="{{route('peminjaman')}}">
-        <i class="bi bi-file-earmark-text me-2"></i></i> Peminjaman
-      </x-nav-link> 
-      <hr style="margin: 0"> 
-      <x-nav-link :active="request()->routeIs('pemberkasan')" href="{{route('pemberkasan')}}">
-        <i class="bi bi-archive me-2"></i> Pemberkasan
-      </x-nav-link> 
+      <a wire:navigate wire:current.exact="active" class="nav-link" href="{{route("dashboard")}}"> 
+        <i class="bi bi-speedometer2 me-2"></i> Dashboard 
+      </a>
+      <hr style="margin: 0">
+      <a wire:navigate wire:current="active" class="nav-link" href="{{route("transaksi")}}"> 
+        <i class="bi bi-bag me-2"></i> Transaksi 
+      </a>
+      <hr style="margin: 0">
+      <a wire:navigate wire:current="active" class="nav-link" href="{{route("pemberkasan")}}"> 
+        <i class="bi bi-archive me-2"></i> Pengemasan 
+      </a>
       <hr style="margin: 0"> 
 
       <!-- Menu dengan Submenu -->
@@ -26,12 +26,11 @@
         <i class="bi bi-chevron-down small"></i>
       </a>
       <div class="collapse submenu" id="submenuUsers" data-bs-parent="#sidebarMenu">
-        <x-nav-link :active="request()->routeIs('control')" href="{{route('control')}}">
-          <i class="bi bi-person-fill-gear"></i> Kontrol
-        </x-nav-link> 
-        <hr style="margin: 0">
-        <x-nav-link :active="request()->routeIs('regist')" href="{{route('regist')}}">
-          <i class="bi bi-person-add"></i> Tambah
-        </x-nav-link> 
+        <a wire:navigate wire:current="active" class="nav-link" href="{{route("control")}}"> 
+          <i class="bi bi-person-fill-gear me-1"></i> Kontrol 
+        </a>
+        <a wire:navigate wire:current="active" class="nav-link" href="{{route("regist")}}"> 
+          <i class="bi bi-person-add me-1"></i> Tambah 
+        </a>
       </div>
     </nav>

@@ -6,12 +6,12 @@ use Livewire\Component;
 use Livewire\Attributes\Title;
 
 
-class Peminjaman extends Component
+class Transaksi extends Component
 {
     #[Title('Peminjaman')]
     
     public function render()
     {
-        return view('livewire.peminjaman');
+        return view('livewire.transaksi');
     }
 }

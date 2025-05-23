@@ -19,6 +19,12 @@ class Registration extends Component
     public $role='';
     public $password='';
     public $password_confirmation="";
+    public $showPassword=false;
+
+    public function toggleShow()
+    {
+        $this->showPassword = !$this->showPassword;
+    }
 
     public function save(){
         $validated = $this->validate([
