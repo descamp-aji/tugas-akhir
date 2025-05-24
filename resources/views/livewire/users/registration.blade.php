@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-1">Daftar</button>
-                                <a class="btn btn-regist ms-1" href="{{route('dashboard')}}">Batal</a>
+                                <a wire:navigate class="btn btn-regist ms-1" href="{{route('dashboard')}}">Batal</a>
                             </div>
                             {{-- <div class="mt-3 text-center form-text">
                                 <p>Created @2025 by Descamp Warna Purna Aji</p>

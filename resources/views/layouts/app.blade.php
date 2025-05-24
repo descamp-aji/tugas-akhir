@@ -11,15 +11,24 @@
     rel="stylesheet"
   />
   {{-- My CSS --}}
+  <!-- Bootstrap Icons -->
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  rel="stylesheet"
+  />
+  <link
+  href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.css"
+  rel="stylesheet"
+  />
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css"
+  rel="stylesheet"
+  />
   <link
     href={{asset('myassets/css/mycss.css')}}
     rel="stylesheet"
   />
-  <!-- Bootstrap Icons -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-    rel="stylesheet"
-  />
+
 
 </head>
 <body>
@@ -69,6 +78,11 @@
 
   <!-- Bootstrap JS Bundle (termasuk Popper) -->
   <script src={{asset('bootstrap-5/js/bootstrap.bundle.min.js')}}></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
+  <script src="https://cdn.datatables.net/2.3.1/js/dataTables.bootstrap5.js"></script>
+  <script src={{asset('myassets/js/script.js')}}></script>
 </body>
 </html>
 
