@@ -52,7 +52,7 @@ body {
         letter-spacing: 0.05em;
     }
     .form-control {
-        /* background-color: var(--grey-light); */
+        background-color: #f4f4f4;
         border: 1.5px solid var(--border-color);
         color: var(--grey-dark);
         font-weight: 500;
@@ -84,14 +84,15 @@ body {
         transition: background-color 0.3s ease;
         box-shadow: 0 2px 6px rgba(139, 109, 92, 0.4);
     }
-    .btn-regist {
+    .btn-regist, .btn-update {
         background-color: var(--grey-lighter);
         font-weight: 600;
         color: #6f5548;
         border-color: var(--grey-medium);
         transition: background-color 0.3s ease;
     }
-    .btn-regist:hover {
+    .btn-regist:hover,
+    .btn-update:hover {
         background-color: var(--grey-lighter);
         font-weight: 600;
         color: #6f5548;
@@ -233,4 +234,10 @@ body {
     .user-info .name a:focus {
     text-decoration: underline; /* agar saat hover/fokus juga tidak muncul underline */
     color: white; /* tetap putih saat hover/fokus */
+    }
+    table .th-users {
+        color: black;
+    }
+    table .td-users{
+        color: #3a3a3a;
     }

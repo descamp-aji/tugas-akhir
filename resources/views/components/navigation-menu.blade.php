@@ -3,11 +3,11 @@
         <i class="bi bi-speedometer2 me-2"></i> Dashboard 
       </a>
       <hr style="margin: 0">
-      <a wire:navigate wire:current="active" class="nav-link" href="{{route("transaksi")}}"> 
+      <a wire:current="active" class="nav-link" href="{{route("transaksi")}}"> 
         <i class="bi bi-bag me-2"></i> Transaksi 
       </a>
       <hr style="margin: 0">
-      <a wire:navigate wire:current="active" class="nav-link" href="{{route("pemberkasan")}}"> 
+      <a wire:current="active" class="nav-link" href="{{route("pengemasan")}}"> 
         <i class="bi bi-archive me-2"></i> Pengemasan 
       </a>
       <hr style="margin: 0"> 
@@ -26,10 +26,10 @@
         <i class="bi bi-chevron-down small"></i>
       </a>
       <div class="collapse submenu" id="submenuUsers" data-bs-parent="#sidebarMenu">
-        <a wire:navigate wire:current="active" class="nav-link" href="{{route("control")}}"> 
+        <a wire:current="active" class="nav-link" href="{{route("control")}}"> 
           <i class="bi bi-person-fill-gear me-1"></i> Kontrol 
         </a>
-        <a wire:navigate wire:current="active" class="nav-link" href="{{route("regist")}}"> 
+        <a wire:current="active" class="nav-link" href="{{route("regist")}}"> 
           <i class="bi bi-person-add me-1"></i> Tambah 
         </a>
       </div>

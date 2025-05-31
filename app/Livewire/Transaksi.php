@@ -8,7 +8,7 @@ use Livewire\Attributes\Title;
 
 class Transaksi extends Component
 {
-    #[Title('Peminjaman')]
+    #[Title('Transaksi')]
     
     public function render()
     {

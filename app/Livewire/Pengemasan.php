@@ -6,12 +6,12 @@ use Livewire\Component;
 use Livewire\Attributes\Title;
 
 
-class Pemberkasan extends Component
+class Pengemasan extends Component
 {
-    #[Title('Pemberkasan')]
+    #[Title('Pengemasan')]
     
     public function render()
     {
-        return view('livewire.pemberkasan');
+        return view('livewire.pengemasan');
     }
 }
