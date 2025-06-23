@@ -15,26 +15,28 @@
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
   rel="stylesheet"
   />
-  {{-- DataTables CSS --}}
-  <link 
-  rel="stylesheet" 
-  href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.css"
-  >
+  {{-- Flatpicker css --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" /> 
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css"
+  />
   {{-- My CSS --}}
   <link
     href={{asset('myassets/css/mycss.css')}}
     rel="stylesheet"
   />
-
 </head>
 <body>
   <aside class="sidebar">
     <!-- Logo -->
     <div class="logo">
-      <span>
-        <img src="{{asset('myassets/img/logo.png')}}" alt="Logo"> 
-        DocuTrack
-      </span>
+      <a href="/">
+        <span>
+          <img src="{{asset('myassets/img/logo.png')}}" alt="Logo" /> 
+          DocuTrack
+        </span>
+      </a>
     </div>
     {{-- Navigation Menu --}}
     <x-navigation-menu/>
@@ -60,24 +62,24 @@
   <!-- Konten utama -->
   <main style="margin-left: 280px; padding-right:1rem; padding-left:1rem ">
     <hr style="margin-top: 0">
-    <div class="container d-flex justify-content-between align-items-center">
-        <nav aria-label="breadcrumb" class="mb-0">
-            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item active" style="color: #4b4b4b" aria-current="page">{{strtoupper($title)}}</li>
-            </ol>
-        </nav>
-        <span><a style="text-decoration: none; color:#4b4b4b" href="{{route('logout')}}"><i class="bi bi-box-arrow-left"></i> Keluar</a></span>
-    </div>
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col">
+          <h6 class="fw-bold">Hallo!! Have a nice day</h6>
+          <h6 style="margin:0px">{{date('l, F j, Y')}}</h6>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <a style="text-decoration: none; color:black" href="{{route('logout')}}"><i class="bi bi-box-arrow-left"></i> Keluar</a>
+        </div>
+      </div>
     <hr>
     {{$slot}}
   </main>
-
-
-  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src={{asset('bootstrap-5/js/bootstrap.bundle.min.js')}}></script>
-  <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
-  <script src="https://cdn.datatables.net/2.3.1/js/dataTables.bootstrap5.js"></script>
-  @livewireScripts
+  <!-- Flatpickr JS + MonthSelect plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
   <script src={{asset('myassets/js/script.js')}}></script>
 </body>
 </html>

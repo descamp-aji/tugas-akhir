@@ -27,7 +27,8 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'nip' => rand(90000000, 999999999),
-            'role' => $this->faker->randomElement(['admin','reguler']),
+            'phone' => $this->faker->numerify('+62###########'),
+            'role' => $this->faker->randomElement(['admin','user']),
             'password' => Hash::make('password'),
         ];
     }

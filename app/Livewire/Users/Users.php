@@ -2,15 +2,17 @@
 
 namespace App\Livewire\Users;
 
+use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\User;
-use Livewire\Attributes\Validate;
 
 class Users extends Component
 {
+    use WithPagination;
     #[Title('User Control')]
-
+    protected $paginationTheme = 'bootstrap';   
+    
     public $selectedUserId;
     public $userId;
     public $nip;
@@ -20,8 +22,11 @@ class Users extends Component
     public $password='';
     public $password_confirmation='';
     public $showPassword=false;
+    public $search='';
+    public $perPage=5;
 
-    protected function rules(){
+    protected function rules()
+    {
         return [
             'nip' => 'required|string|size:9|unique:users,nip,' . $this->userId,
             'name' => 'required',
@@ -41,14 +46,13 @@ class Users extends Component
         $this->showPassword = !$this->showPassword;
     }
 
-    public function edit($id)
+    public function edit($user)
     {
-        $selected_user = User::findOrFail($id);
-        $this->userId = $selected_user->id;
-        $this->name = $selected_user->name;
-        $this->nip = $selected_user->nip;
-        $this->email = $selected_user->email;
-        $this->role = $selected_user->role;
+        $this->userId = $user['id'];
+        $this->name = $user['name'];
+        $this->nip = $user['nip'];
+        $this->email = $user['email'];
+        $this->role = $user['role'];
         
     }
 
@@ -77,12 +81,12 @@ class Users extends Component
         }
         
         if (count($updateFields) > 0) {
+            $updateFields['updated_at'] = now();
             $user->update($updateFields);
-            session()->flash('success', 'Data user berhasil diupdate!');
+            session()->flash('success', 'Data user berhasil diubah!');
         } else {
             session()->flash('warning', 'Tidak ada perubahan data.');
         }
-
         return redirect()->route('control');
     }
 
@@ -94,17 +98,18 @@ class Users extends Component
                 $user->delete();
             }
             $this->selectedUserId = null;
-            // $this->dispatchBrowserEvent('closeDeleteModal');
         }
         return redirect()->route('control')->with('danger', 'Pengguna berhasil dihapus');
     }
 
+    public function updatingSearch(){
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $users = User::orderBy('name', 'asc')->get();
-        $view_data = [
-            'users' => $users
-        ];
-        return view('livewire.users.users', $view_data);
+        return view('livewire.users.users', [
+            'users' => User::search($this->search)->orderBy('name', 'asc')->paginate($this->perPage)
+        ]);
     }
 }

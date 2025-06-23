@@ -18,11 +18,17 @@ class Login extends Component
 
     public string $nip="";
     public string $password="";
+    public $showPassword=false;
+
+    public function toggleShow()
+    {
+        $this->showPassword = !$this->showPassword;
+    }
 
     public function login()
     {
         if(Auth::attempt($this->only('nip', 'password'))){
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         }
         throw ValidationException::withMessages([
             'error' => 'Nip atau Password salah'

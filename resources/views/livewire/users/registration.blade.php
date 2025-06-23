@@ -35,7 +35,7 @@
                                 <select id="role" wire:model="role" class="form-select" name="role">
                                     <option value="" selected>Pilih...</option>
                                     <option value="admin">Administrator</option>
-                                    <option value="reguler">Regular User</option>
+                                    <option value="user">Regular User</option>
                                 </select>
                                 @error('role')
                                     <small class="text-danger text-end">{{$message}}</small>
@@ -62,11 +62,8 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary me-1">Daftar</button>
-                                <a wire:navigate class="btn btn-regist ms-1" href="{{route('dashboard')}}">Batal</a>
+                                <a class="btn btn-regist ms-1" href="{{route('home')}}">Batal</a>
                             </div>
-                            {{-- <div class="mt-3 text-center form-text">
-                                <p>Created @2025 by Descamp Warna Purna Aji</p>
-                            </div> --}}
                         </form>
                     </div>
                 </div>

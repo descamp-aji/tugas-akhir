@@ -51,6 +51,7 @@ body {
         font-weight: 700;
         letter-spacing: 0.05em;
     }
+    
     .form-control {
         background-color: #f4f4f4;
         border: 1.5px solid var(--border-color);
@@ -170,6 +171,10 @@ body {
         font-size: 1.50rem;
         font-weight: 700;
         user-select: none;
+        color: var(--grey-dark);
+    }
+    .sidebar .logo a{
+        text-decoration: none;
     }
     .nav-link {
         color: #3a3a3a;
@@ -240,4 +245,8 @@ body {
     }
     table .td-users{
         color: #3a3a3a;
+    }
+
+    .card-body{
+        background-color: rgb(243, 243, 243);
     }

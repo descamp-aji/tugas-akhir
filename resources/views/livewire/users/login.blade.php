@@ -20,22 +20,26 @@
                             id="nip"
                             name="nip"
                             wire:model="nip"
-                            placeholder="Masukkan NIP 9 digit"
+                            placeholder="NIP 9 digit"
                             required
                             />
                         </div>
-                
+
                         <div class="mb-3">
-                            <label for="password" class="form-label">Kata Sandi</label>
-                            <input
-                            type="password"
-                            class="form-control"
-                            id="password"
-                            wire:model="password"
-                            name="password"
-                            placeholder="Masukkan kata sandi"
-                            required
-                            />
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input 
+                                type="{{ $showPassword ? 'text' : 'password' }}" 
+                                id="password"
+                                name="password"
+                                wire:model="password"
+                                class="form-control" 
+                                placeholder="Masukan password" 
+                                aria-describedby="btn-toggleShow">
+                                <button wire:click="toggleShow" class="btn btn-primary" type="button" id="toggleShow">
+                                    {!! $showPassword ? '<i class="bi bi-eye"></i>' : '<i class="bi bi-eye-fill"></i>' !!}
+                                </button>
+                            </div>
                         </div>
                         @error('error')
                             <p class="text-danger text-center">{{$message}}</p>
