@@ -3,10 +3,10 @@
         <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{route("dashboard")}}"> 
           <i class="bi bi-speedometer2 me-2"></i> Dashboard 
         </a>
+        <hr style="margin: 0">
       @endif
       <!-- Menu dengan Submenu -->
       {{-- Submenu Transaksi --}}
-      <hr style="margin: 0">
       <a
         class="nav-link d-flex justify-content-between align-items-center"
         data-bs-toggle="collapse"
@@ -26,14 +26,16 @@
         <a wire:current="active" class="nav-link" href="{{route("peminjaman")}}"> 
           <i class="bi bi-clipboard-minus me-1"></i> Peminjaman 
         </a>
-        <hr style="margin: 0">
-        <a wire:current="active" class="nav-link" href="{{route("konfirmasi")}}"> 
-          <i class="bi bi-clipboard-check me-1"></i> Konfirmasi Transaksi 
-        </a>
+        @if (auth()->user()->role == 'admin')
+          <hr style="margin: 0">
+          <a wire:current="active" class="nav-link" href="{{route("konfirmasi")}}"> 
+            <i class="bi bi-clipboard-check me-1"></i> Konfirmasi Transaksi 
+          </a>
+        @endif
       </div>
-      <hr style="margin: 0">
       {{-- Submenu Pengemasan --}}
       @if (auth()->user()->role == 'admin')
+      <hr style="margin: 0">
       <a
         class="nav-link d-flex justify-content-between align-items-center"
         data-bs-toggle="collapse"
@@ -54,6 +56,7 @@
         <a wire:current="active" class="nav-link" href="{{route("kemasan")}}"> 
           <i class="bi bi-box2 me-1"></i> Input Kemasan 
         </a>
+        <hr style="margin: 0">
         <a wire:current="active" class="nav-link" href="{{route("berkas")}}"> 
           <i class="bi bi-file-earmark-check me-1"></i> Input Berkas 
         </a>
@@ -82,6 +85,5 @@
           <i class="bi bi-person-add me-1"></i> Tambah 
         </a>
       </div>
-      <hr style="margin: 0">
       @endif
     </nav>

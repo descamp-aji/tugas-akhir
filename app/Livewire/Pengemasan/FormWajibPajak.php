@@ -57,7 +57,7 @@ class FormWajibPajak extends Component
             $update_fields['wajib_pajak_id'] = $this->update_wajib_pajak_id;
         };
         if($this->update_name !== $taxpayer->name){
-            $update_fields['name'] = $this->update_name;
+            $update_fields['name'] = ucwords(strtolower($this->update_name));
         };
         if($this->update_jenis !== $taxpayer->jenis){
             $update_fields['jenis'] = $this->update_jenis;
@@ -76,13 +76,17 @@ class FormWajibPajak extends Component
     
     public function save()
     {
-        $validated = $this->validate([
+        $this->validate([
             'wajib_pajak_id' => 'required|min:15|unique:wajib_pajak',
             'name' => 'required',
             'jenis' => 'required',
         ]);
 
-        Wajib_pajak::create($validated);
+        Wajib_pajak::create([
+            'wajib_pajak_id' => $this->wajib_pajak_id,
+            'name' => ucwords(strtolower($this->name)),
+            'jenis' => $this->jenis
+        ]);
 
         $this->wajib_pajak_id = null;
         $this->name = null;

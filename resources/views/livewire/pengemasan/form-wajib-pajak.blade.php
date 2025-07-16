@@ -5,12 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="row mb-3">
-                        <div class="col text-center">
-                            <h6 class="fw-bold">Input Data Wajib Pajak</h6>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center mt-3">
                         <div class="col-8">
                             <form wire:submit="save">
                                 @csrf
@@ -52,6 +47,14 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="col-4">
+                            <div class="row justify-content-center">
+                                <h5 class="fw-bold text-center" style="color: #8b6d5c">Input Wajib Pajak</h5>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#8b6d5c" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,18 +62,22 @@
     </div>
     <div class="row mt-3">
         <div class="col">
-            <div class="card border-info">
+            <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        @if (session('success'))
-                            <x-flash-message type="success" :message="session('success')" />
-                        @endif
-                        @if (session('warning'))
-                            <x-flash-message type="warning" :message="session('warning')" />
-                        @endif
-                        @if (session('danger'))
-                            <x-flash-message type="danger" :message="session('danger')" />
-                        @endif
+                        <div class="col">
+                            @if (session('success'))
+                                <x-flash-message type="success" :message="session('success')" />
+                            @endif
+                            @if (session('warning'))
+                                <x-flash-message type="warning" :message="session('warning')" />
+                            @endif
+                            @if (session('danger'))
+                                <x-flash-message type="danger" :message="session('danger')" />
+                            @endif
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col d-flex align-items-center">
                             <h6 class="fw-bold" style="margin:0;">Daftar Wajib Pajak</h6>
                         </div>
@@ -81,7 +88,7 @@
                     <div class="row mt-3">
                         <div class="col">
                             <table id="taransactionTable" class="table table-bordered table-hover text-center">
-                                <thead class="table-info">
+                                <thead class="table-secondary">
                                     <tr>
                                         <th style="width: 50px;">No</th>
                                         <th style="width: 150px;">NPWP</th>
@@ -93,7 +100,7 @@
                                 <tbody>
                                     @if ($tax_payers->firstItem() == 0)
                                         <tr>
-                                            <td colspan=5>Data tidak ditemukan</td>
+                                            <td colspan=5>Tidak ada data</td>
                                         </tr>
                                     @endif
                                     @foreach ($tax_payers as $key => $tax_payer)

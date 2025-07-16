@@ -39,6 +39,27 @@
                                 <small class="text-danger text-end">{{$message}}</small>
                             @enderror
                         </div>
+                        <div class="col-md-6">
+                            <label for="seksi_id" class="form-label">Seksi</label>
+                            <select id="seksi_id" wire:model="seksi_id" class="form-select" name="seksi_id">
+                                @foreach ($seksi as $item)
+                                    <option value="{{$item->id}}">{{$item->deskripsi}}</option>
+                                @endforeach
+                            </select>
+                            @error('seksi_id')
+                                <small class="text-danger text-end">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">No Whatsapp</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">+62</span>
+                                <input type="text" wire:model="phone" class="form-control" id="phone" name="phone" placeholder="Masukan tanpa angka nol" aria-label="phone" aria-describedby="basic-addon1">
+                            </div>
+                            @error('phone')
+                                <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        </div>
                         <div class="col-md-12">
                             <label for="password" class="form-label">Atur ulang kata sandi</label>
                             <input type="{{ $showPassword ? 'text' : 'password' }}" name="password" wire:model.defer="password" class="form-control" id="password" placeholder="Masukan kata sandi">

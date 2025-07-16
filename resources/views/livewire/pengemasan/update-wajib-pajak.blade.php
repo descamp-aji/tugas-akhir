@@ -27,9 +27,9 @@
                             @enderror
                         </div>
                         <div class="mb-3 row">
-                            <label for="jenis_wp" class="col-sm-4 col-form-label">Jenis Wajib Pajak</label>
+                            <label for="update_jenis" class="col-sm-4 col-form-label">Jenis Wajib Pajak</label>
                             <div class="col-sm-8">
-                                <select id="role" wire:model.defer="update_jenis" class="form-select" name="status">
+                                <select id="update_jenis" wire:model.defer="update_jenis" class="form-select" name="status">
                                     <option value="0">Badan</option>
                                     <option value="1">Orang Pribadi</option>
                                 </select>

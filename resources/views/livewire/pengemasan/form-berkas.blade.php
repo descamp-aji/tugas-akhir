@@ -11,21 +11,34 @@
     </div>
     <div class="row mt-3">
         <div class="col">
-            <div class="card border-warning">
+            <div class="card">
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            @if (session('success'))
+                                <x-flash-message type="success" :message="session('success')" />
+                            @endif
+                            @if (session('warning'))
+                                <x-flash-message type="warning" :message="session('warning')" />
+                            @endif
+                            @if (session('danger'))
+                                <x-flash-message type="danger" :message="session('danger')" />
+                            @endif
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col d-flex align-items-center">
                             <h6 class="fw-bold" style="margin:0;">Daftar Berkas</h6>
                         </div>
                         <div class="col-3">
-                            <input type="text" class="form-control" id="keyWord" placeholder="Masukan kata kunci">
+                            <input wire:model.live="search" type="text" class="form-control" id="keyWord" placeholder="Masukan NPWP atau LHP">
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
                             <div class="table-responsive" style="max-width: 100%;">
                                 <table id="taransactionTable" style="table-layout: fixed;" class="table table-bordered table-hover text-center">
-                                    <thead class="table-warning">
+                                    <thead class="table-secondary">
                                         <tr>
                                             <th style="width: 50px;">No</th>
                                             <th style="width: 150px;">NPWP</th>
@@ -34,20 +47,34 @@
                                             <th style="width: 150px;">Tanggal LHP</th>
                                             <th style="width: 150px;">Masa Pajak</th>
                                             <th style="width: 100px;">Kode Riksa</th>
+                                            <th style="width: 150px;">Kemasan</th>
                                             <th style="width: 150px;">Status</th>
                                             <th style="width: 120px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if ($berkas->firstItem() == 0)
+                                            <tr>
+                                                <td colspan=10>Data tidak ditemukan</td>
+                                            </tr>
+                                        @endif
+                                        @foreach ($berkas as $key => $item)
                                         <tr class="align-middle">
-                                            <td>1</td>
-                                            <td>123456789411000</td>
-                                            <td>Sumber Makmur Jaya</td>
-                                            <td>LAP-450/RIKSIS/KP.080308/2025</td>
-                                            <td>20 Juni 2023</td>
-                                            <td>01-2022 12-2022</td>
-                                            <td>1182</td>
-                                            <td><span class="badge text-bg-danger">Tidak Tersedia</span></td>
+                                            <td>{{$key + 1}}</td>
+                                            <td>{{$item->wajib_pajak_id}}</td>
+                                            <td>{{$item->wajib_pajak->name}}</td>
+                                            <td>{{$item->no_lhp}}</td>
+                                            <td>{{date('d F Y', strtotime($item->tgl_lhp))}}</td>
+                                            <td>{{$item->masa_pajak_awal}} {{$item->masa_pajak_akhir}}</td>
+                                            <td>{{$item->kode_riksa_id}}</td>
+                                            <td>{{$item->kemasan->label}}</td>
+                                            <td>
+                                                @if ($item->berkas_status->berkas_status_id == 1)
+                                                    <span class="badge text-bg-success">Tersedia</span>
+                                                @else
+                                                    <span class="badge text-bg-danger">Tidak Tersedia</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col d-flex justify-content-around">
@@ -57,6 +84,7 @@
                                                             title="Edit"
                                                             data-bs-toggle="modal" 
                                                             data-bs-target="#updateDocument"
+                                                            wire:click="edit({{ $item }})"
                                                         >
                                                             <i class="bi bi-pencil-square"></i>
                                                         </button>
@@ -65,7 +93,8 @@
                                                             class="btn btn-outline-danger" 
                                                             title="Hapus"
                                                             data-bs-toggle="modal" 
-                                                            data-bs-target="#deleteConfirm" 
+                                                            data-bs-target="#deleteConfirm"
+                                                            wire:click = "selectedId({{ $item->berkas_id }})" 
                                                         >
                                                             <i class="bi bi-trash"></i>
                                                         </button>
@@ -73,9 +102,11 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                            {{ $berkas->links() }}
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Users;
 
+use App\Models\Seksi;
 use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -19,6 +20,8 @@ class Users extends Component
     public $name;
     public $email;
     public $role;
+    public $seksi_id;
+    public $phone;
     public $password='';
     public $password_confirmation='';
     public $showPassword=false;
@@ -32,7 +35,9 @@ class Users extends Component
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $this->userId,
             'role' => 'required',
-            'password' => 'min:8|confirmed'
+            'password' => 'min:8|confirmed',
+            'seksi_id' => 'required',
+            'phone' => 'required|unique:users,phone,' . $this->userId
         ];
     }
 
@@ -53,7 +58,8 @@ class Users extends Component
         $this->nip = $user['nip'];
         $this->email = $user['email'];
         $this->role = $user['role'];
-        
+        $this->phone = $user['phone'];
+        $this->seksi_id = $user['seksi_id'];
     }
 
     public function update(){
@@ -61,7 +67,7 @@ class Users extends Component
         $user = User::findOrFail($this->userId);
         $updateFields = [];
         if ($this->name !== $user->name) {
-            $updateFields['name'] = $this->name;
+            $updateFields['name'] = ucwords(strtolower($this->name));
         }
 
         if ($this->nip !== $user->nip) {
@@ -69,11 +75,19 @@ class Users extends Component
         }
 
         if ($this->email !== $user->email) {
-            $updateFields['email'] = $this->email;
+            $updateFields['email'] = strtolower($this->email);
         }
 
         if ($this->role !== $user->role) {
             $updateFields['role'] = $this->role;
+        }
+
+        if ($this->phone !== $user->phone) {
+            $updateFields['phone'] = $this->phone;
+        }
+
+        if ($this->seksi_id !== $user->seksi_id) {
+            $updateFields['seksi_id'] = $this->seksi_id;
         }
 
         if (!empty($this->password)) {
@@ -109,7 +123,8 @@ class Users extends Component
     public function render()
     {
         return view('livewire.users.users', [
-            'users' => User::search($this->search)->orderBy('name', 'asc')->paginate($this->perPage)
+            'users' => User::search($this->search)->orderBy('name', 'asc')->paginate($this->perPage),
+            'seksi' => Seksi::all()
         ]);
     }
 }

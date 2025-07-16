@@ -250,3 +250,7 @@ body {
     .card-body{
         background-color: rgb(243, 243, 243);
     }
+    
+    .regist-bg{
+        background-color: var(--grey-lighter);
+    }

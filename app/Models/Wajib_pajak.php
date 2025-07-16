@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Scout\Searchable;
 
 
@@ -20,11 +21,17 @@ class Wajib_pajak extends Model
         'name',
         'jenis',
     ];
+    
     public function toSearchableArray(): array
     {
         return [
             'wajib_pajak_id' => $this->wajib_pajak_id,
             'name' => $this->name,
         ];
+    }
+
+    public function berkas(): HasMany
+    {
+        return $this->hasMany(Berkas::class, 'wajib_pajak_id');
     }
 }

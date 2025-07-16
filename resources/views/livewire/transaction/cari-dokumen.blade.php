@@ -1,37 +1,56 @@
 <div>
+    @include('livewire.transaction.detail-document')
+    @include('livewire.transaction.cart')
     <div class="row mt-3">
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    @if (session('success'))
+                        <x-flash-message type="success" :message="session('success')" />
+                    @endif
+                    @if (session('warning'))
+                        <x-flash-message type="warning" :message="session('warning')" />
+                    @endif
+                    @if (session('danger'))
+                        <x-flash-message type="danger" :message="session('danger')" />
+                    @endif
                     <div class="row">
                         <div class="col d-flex align-items-center">
                             <h6 class="fw-bold">Pencarian Dokumen</h6>
                         </div>
                         <div class="col d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary position-relative">
+                            <button 
+                            type="button" 
+                            class="btn btn-primary position-relative"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#cartModal"
+                            wire:click="keranjang"
+                            >
                                 <i class="bi bi-cart"></i> keranjang
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    0
+                                    {{count($cart)}}
                                 </span>
                             </button>
                         </div>
                     </div>
-                    <div class="row my-3">
-                        <div class="col-3">
-                            <select class="form-select" id="inputGroupSelect02">
-                                <option value="" selected>Pilih Kriteria</option>
-                                <option value="name">Nama WP</option>
-                                <option value="npwp">NPWP</option>
-                                <option value="no_lhp">No LHP</option>
-                            </select>
-                        </div>
-                        <div class="col d-flex align-items-end">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="npwp" placeholder="Masukan kata kunci">
-                                <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+                    <form wire:submit="search">
+                        @csrf
+                        <div class="row my-3">
+                            <div class="col-3">
+                                <select wire:model="kriteria" class="form-select" id="kriteria" required>
+                                    <option value="" selected>Pilih Kriteria</option>
+                                    <option value="wajib_pajak_id">NPWP</option>
+                                    <option value="no_lhp">No LHP</option>
+                                </select>
+                            </div>
+                            <div class="col d-flex align-items-end">
+                                <div class="input-group">
+                                    <input wire:model="key_word" type="text" class="form-control" id="key_word" autofocus placeholder="Masukan NPWP atau No LHP" required>
+                                    <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="row">
                         <div class="col">
                             <div class="table-responsive" style="max-width: 100%;">
@@ -40,53 +59,57 @@
                                         <tr>
                                             <th style="width: 50px;">No</th>
                                             <th style="width: 150px;">NPWP</th>
-                                            <th style="width: 300px;">Nama WP</th>
+                                            <th style="width: 250px;">Nama WP</th>
                                             <th style="width: 250px;">Nomor Dokumen</th>
-                                            <th style="width: 150px;">Masa Pajak</th>
-                                            <th style="width: 100px;">Status</th>
-                                            <th style="width: 70px;">Aksi</th>
+                                            <th style="width: 110px;">Status</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
+                                        @if (count($result)==0)
+                                            <tr>
+                                                <td colspan=6>Tidak ada data</td>
+                                            </tr>
+                                        @endif
+                                        @foreach ($result as $key => $item)
                                         <tr class="align-middle">
-                                            <td>1</td>
-                                            <td>123456789411000</td>
-                                            <td>Sumber Makmur Jaya</td>
-                                            <td>LAP-450/RIKSIS/KP.080308/2025</td>
-                                            <td>01-2021 12-2021</td>
-                                            <td><span class="badge text-bg-success">Tersedia</span></td>
+                                            <td>{{$key + 1}}</td>
+                                            <td>{{$item->wajib_pajak_id}}</td>
+                                            <td>{{$item->wajib_pajak->name}}</td>
+                                            <td>{{$item->no_lhp}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-outline-success" title="Tambah" >
-                                                    <i class="bi bi-plus-square"></i>
-                                                </button>
+                                                @if ($item->berkas_status->berkas_status_id == 1)
+                                                    <span class="badge text-bg-success">Tersedia</span>
+                                                @elseif ($item->berkas_status->berkas_status_id == 0)
+                                                    <span class="badge text-bg-danger">Tidak Tersedia</span>
+                                                @else
+                                                    <span class="badge text-bg-warning">Keranjang</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->berkas_status->berkas_status_id == 1)
+                                                    <button 
+                                                    type="button" 
+                                                    class="btn btn-outline-success" 
+                                                    title="tambah"
+                                                    wire:click="add_to_cart({{$item->berkas_id}})"
+                                                    >
+                                                        <i class="bi bi-plus-square"></i>
+                                                    </button>
+                                                @endif
+                                                    <button 
+                                                    type="button" 
+                                                    class="btn btn-outline-primary" 
+                                                    title="info"
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#detailDocument"
+                                                    wire:click="detail({{$item->berkas_id}})"
+                                                    >
+                                                        <i class="bi bi-info-square"></i>
+                                                    </button>
                                             </td>
                                         </tr>
-                                        <tr class="align-middle">
-                                            <td>2</td>
-                                            <td>123456789411000</td>
-                                            <td>Sumber Makmur Jaya</td>
-                                            <td>LAP-454/RIKSIS/KP.080308/2025</td>
-                                            <td>01-2021 12-2021</td>
-                                            <td><span class="badge text-bg-danger">Dipinjam</span></td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-primary" title="Info" >
-                                                    <i class="bi bi-info-circle"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>3</td>
-                                            <td>123456789411000</td>
-                                            <td>Sumber Makmur Jaya</td>
-                                            <td>LAP-454/RIKSIS/KP.080308/2025</td>
-                                            <td>01-2021 12-2021</td>
-                                            <td><span class="badge text-bg-warning">Dikeranjang</span></td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-primary" title="Info" >
-                                                    <i class="bi bi-info-circle"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
