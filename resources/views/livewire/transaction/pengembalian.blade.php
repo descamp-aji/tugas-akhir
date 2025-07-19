@@ -62,12 +62,12 @@
                                         @endphp
                                         @if (count($pengembalian)==0)
                                             <tr>
-                                                <td colspan="8">Tidak Ada Data</td>
+                                                <td colspan="8">Tidak ada data</td>
                                             </tr>
                                         @endif
                                         @foreach ($pengembalian as $key => $item)
                                         <tr class="align-middle">
-                                            <td>{{$key + 1}}</td>
+                                            <td>{{$pengembalian->firstItem() + $key}}</td>
                                             <td>{{$item->user->name}}</td>
                                             <td>{{$item->no_surat}}</td>
                                             <td>{{date('d F Y', strtotime($item->tgl_surat))}}</td>
@@ -113,6 +113,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{$pengembalian->links()}}
                             </div>
                         </div>
                     </div>

@@ -101,10 +101,10 @@
                             <table id="taransactionTable" class="table table-bordered table-hover text-center">
                                 <thead class="table-secondary">
                                     <tr>
-                                        <th style="width: 50px;">No</th>
-                                        <th style="width: 150px;">Nama Kemasan</th>
-                                        <th style="width: 150px;">Terisi</th>
-                                        <th style="width: 150px;">Aksi</th>
+                                        <th class="custom-thead" style="width: 50px;">No</th>
+                                        <th class="custom-thead" style="width: 150px;">Nama Kemasan</th>
+                                        <th class="custom-thead" style="width: 150px;">Terisi</th>
+                                        <th class="custom-thead" style="width: 150px;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -115,7 +115,7 @@
                                     @endif
                                     @foreach ($items as $key => $item)
                                     <tr class="align-middle">
-                                        <td>{{$key + 1}}</td>
+                                        <td>{{$items->firstItem() + $key}}</td>
                                         <td>{{$item['label']}}</td>
                                         <td>{{count($item->berkas)}} berkas</td>
                                         <td>

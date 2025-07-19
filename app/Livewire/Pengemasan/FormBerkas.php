@@ -9,10 +9,13 @@ use App\Models\Kode_riksa;
 use App\Models\Wajib_pajak;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 class FormBerkas extends Component
 {
     use WithPagination;
+    #[Title('Input Berkas')]
+
     protected $paginationTheme = 'bootstrap';
 
     public $berkas_id;

@@ -3,7 +3,7 @@
     @include("components.delete")
     <div class="row mt-3">
         <div class="col">
-            <div class="card border-primary">
+            <div class="card border-secondary">
                 <div class="card-body">
                     @if (session('success'))
                         <x-flash-message type="success" :message="session('success')" />
@@ -15,12 +15,12 @@
                         <x-flash-message type="danger" :message="session('danger')" />
                     @endif
                     <div class="row">
-                            <div class="col">
-                                <div class="col d-flex align-items-center">
-                                    <h6 class="fw-bold">Pencarian Pengguna</h6>
-                                </div>
+                        <div class="col">
+                            <div class="col d-flex align-items-center">
+                                <h6 class="fw-bold">Pencarian Pengguna</h6>
                             </div>
                         </div>
+                    </div>
                     <div class="row justify-content-between mt-3">
                         <div class="col-2">
                             <div class="pilihan" style="width: 70px">
@@ -38,65 +38,75 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-bordered table-hover text-center">
-                        <thead class="table-primary">
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">NIP</th>
-                                <th scope="col">Nama Pegawai</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($users->firstItem() == 0)
-                                <tr>
-                                    <td colspan=6>Data tidak ditemukan</td>
-                                </tr>
-                            @endif
-                            @foreach ($users as $key => $user)
-                            <tr wire:key="user-{{ $user->id }}" class="align-middle">
-                                <td>{{ $users->firstItem() + $key}}</td>
-                                <td>{{ $user->nip }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    {!! $user->role === 'admin' ? 
-                                    '<span class="badge text-bg-primary">Administrator</span>' : 
-                                    '<span class="badge text-bg-secondary">Regular User</span>' !!}
-                                </td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col d-flex justify-content-around">
-                                            <button 
-                                                type="button" 
-                                                class="btn btn-outline-warning" 
-                                                data-bs-toggle="modal" 
-                                                title="Ubah" 
-                                                data-bs-target="#updateModal"
-                                                wire:click="edit({{ $user }})"
-                                            >
-                                                <i class="bi bi-pencil-square"></i>
-                                            </button>
-                                            <button 
-                                                type="button" 
-                                                class="btn btn-outline-danger" 
-                                                data-bs-toggle="modal" 
-                                                data-bs-target="#deleteConfirm"
-                                                title="Hapus"
-                                                wire:click="selectedUser({{ $user->id }})"
-                                            >
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    {{ $users->links() }}
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive" style="max-width: 100%;">
+                                <table style="table-layout: fixed;" class="table table-bordered table-hover">
+                                    <thead class="text-center table-secondary">
+                                        <tr>
+                                            <th class="custom-thead" style="width: 50px;">No</th>
+                                            <th class="custom-thead" style="width: 100px;">NIP</th>
+                                            <th class="custom-thead" style="width: 210px;">Nama</th>
+                                            <th class="custom-thead" style="width: 210px;">Email</th>
+                                            <th class="custom-thead" style="width: 150px;">No Whatsapp</th>
+                                            <th class="custom-thead" style="width: 210px;">Seksi</th>
+                                            <th class="custom-thead" style="width: 150px;">Role</th>
+                                            <th class="custom-thead" style="width: 120px;">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-center">
+                                        @if ($users->firstItem() == 0)
+                                            <tr>
+                                                <td colspan=8>Data tidak ditemukan</td>
+                                            </tr>
+                                        @endif
+                                        @foreach ($users as $key => $user)
+                                        <tr wire:key="user-{{ $user->id }}" class="align-middle">
+                                            <td>{{ $users->firstItem() + $key}}</td>
+                                            <td>{{ $user->nip }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>+62{{$user->phone}}</td>
+                                            <td>{{$user->seksi->deskripsi}}</td>
+                                            <td>
+                                                {!! $user->role === 'admin' ? 
+                                                '<span class="badge text-bg-primary">Administrator</span>' : 
+                                                '<span class="badge text-bg-secondary">Regular User</span>' !!}
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col d-flex justify-content-around">
+                                                        <button 
+                                                            type="button" 
+                                                            class="btn btn-outline-warning" 
+                                                            data-bs-toggle="modal" 
+                                                            title="Ubah" 
+                                                            data-bs-target="#updateModal"
+                                                            wire:click="edit({{ $user }})"
+                                                        >
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                        <button 
+                                                            type="button" 
+                                                            class="btn btn-outline-danger" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#deleteConfirm"
+                                                            title="Hapus"
+                                                            wire:click="selectedUser({{ $user->id }})"
+                                                        >
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            {{ $users->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

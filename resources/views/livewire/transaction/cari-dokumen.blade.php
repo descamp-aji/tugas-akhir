@@ -54,15 +54,15 @@
                     <div class="row">
                         <div class="col">
                             <div class="table-responsive" style="max-width: 100%;">
-                                <table id="taransactionTable" style="table-layout: fixed;" class="table table-bordered table-hover">
+                                <table id="taransactionTable" style="table-layout: fixed; min-width: 920px" class="table table-bordered table-hover">
                                     <thead class="text-center table-secondary">
                                         <tr>
-                                            <th style="width: 50px;">No</th>
-                                            <th style="width: 150px;">NPWP</th>
-                                            <th style="width: 250px;">Nama WP</th>
-                                            <th style="width: 250px;">Nomor Dokumen</th>
-                                            <th style="width: 110px;">Status</th>
-                                            <th>Aksi</th>
+                                            <th class="custom-thead" style="width: 50px;">No</th>
+                                            <th class="custom-thead" style="width: 150px;">NPWP</th>
+                                            <th class="custom-thead" style="width: 230px;">Nama WP</th>
+                                            <th class="custom-thead" style="width: 250px;">Nomor Dokumen</th>
+                                            <th class="custom-thead" style="width: 110px;">Status</th>
+                                            <th class="custom-thead" style="width: 130px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">

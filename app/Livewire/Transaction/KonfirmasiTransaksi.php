@@ -7,11 +7,14 @@ use App\Models\Transaction_hdr;
 use App\Models\Berkas;
 use App\Models\User;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 
 class KonfirmasiTransaksi extends Component
 {
     use WithPagination;
+    #[Title('Konfirmasi Transaksi')]
+
     protected $paginationTheme = 'bootstrap';
     public $transaction_detail=[];
     public $name;

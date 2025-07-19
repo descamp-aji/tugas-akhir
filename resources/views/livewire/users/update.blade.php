@@ -9,7 +9,7 @@
                     <form class="row g-3">
                         @csrf
                         <div class="col-md-5">
-                            <label for="nip" class="form-label">Nomor ID</label>
+                            <label for="nip" class="form-label">NIP Pegawai</label>
                             <input wire:model.defer ="nip" type="text" class="form-control" id="nip" name= "nip" placeholder="Masukan NIP 9 digit">
                             @error('nip')
                                 <small class="text-danger">{{$message}}</small>

@@ -90,11 +90,11 @@
                             <table id="taransactionTable" class="table table-bordered table-hover text-center">
                                 <thead class="table-secondary">
                                     <tr>
-                                        <th style="width: 50px;">No</th>
-                                        <th style="width: 150px;">NPWP</th>
-                                        <th style="width: 200px;">Nama Wajib Pajak</th>
-                                        <th style="width: 150px;">Jenis Wajib Pajak</th>
-                                        <th style="width: 120px">Aksi</th>
+                                        <th class="custom-thead" style="width: 50px;">No</th>
+                                        <th class="custom-thead" style="width: 150px;">NPWP</th>
+                                        <th class="custom-thead" style="width: 200px;">Nama Wajib Pajak</th>
+                                        <th class="custom-thead" style="width: 150px;">Jenis Wajib Pajak</th>
+                                        <th class="custom-thead" style="width: 120px">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -105,7 +105,7 @@
                                     @endif
                                     @foreach ($tax_payers as $key => $tax_payer)
                                     <tr class="align-middle">
-                                        <td>{{$key + 1}}</td>
+                                        <td>{{$tax_payers->firstItem() + $key}}</td>
                                         <td>{{$tax_payer->wajib_pajak_id}}</td>
                                         <td>{{$tax_payer->name}}</td>
                                         <td>{{$tax_payer->jenis === 1 ? 'Orang Pribadi' : 'Badan'}}</td>

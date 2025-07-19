@@ -13,7 +13,7 @@
                     <form wire:submit="login" class="row">
                         @csrf
                         <div class="mb-3">
-                            <label for="nip" class="form-label">Nomor ID</label>
+                            <label for="nip" class="form-label">NIP Pegawai</label>
                             <input
                             type="text"
                             class="form-control"
@@ -50,7 +50,7 @@
                             </button>
                         </div>
                         <div class="mt-3 text-center form-text" >
-                            <p>Created @2025 by Descamp Warna Purna Aji</p>
+                            <p>Lupa password? silakan hubungi Admin</p>
                         </div>
                     </form>
                 </main>

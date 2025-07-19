@@ -15,8 +15,8 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">{{$no_lhp}}</li>
                             <li class="list-group-item">{{date('d F Y', strtotime($tgl_lhp))}}</li>
-                            <li class="list-group-item">{{$masa_awal}} {{$masa_akhir}}</li>
-                            <li class="list-group-item">{{$kode_riksa}}</li>
+                            <li class="list-group-item">{{$masa_awal}} s.d. {{$masa_akhir}}</li>
+                            <li class="list-group-item">{{$kode_riksa}} - {{$deskripsi_kode_riksa}}</li>
                         </ul>
                     </div>
                 </div>

@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Isi Keranjang</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Form Peminjaman</h5>
                 </div>
                 <form wire:submit="pinjam">
                     <div class="modal-body">
@@ -47,11 +47,11 @@
                                     <table id="taransactionTable" class="table table-bordered table-hover">
                                         <thead class="text-center table-secondary">
                                             <tr>
-                                                <th>No</th>
-                                                <th>NPWP</th>
-                                                <th>Nama WP</th>
-                                                <th>Nomor Dokumen</th>
-                                                <th>Aksi</th>
+                                                <th class="custom-thead">No</th>
+                                                <th class="custom-thead">NPWP</th>
+                                                <th class="custom-thead">Nama WP</th>
+                                                <th class="custom-thead">Nomor Dokumen</th>
+                                                <th class="custom-thead">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">

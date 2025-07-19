@@ -71,15 +71,18 @@
                             <table id="taransactionTable" class="table table-bordered table-hover text-center">
                                 <thead class="table-secondary">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Peminjam</th>
-                                        <th>Surat Peminjaman</th>
-                                        <th>Jumlah</th>
-                                        <th>Status Peminjaman</th>
-                                        <th>Aksi</th>
+                                        <th class="custom-thead" >No</th>
+                                        <th class="custom-thead" >Nama Peminjam</th>
+                                        <th class="custom-thead" >Surat Peminjaman</th>
+                                        <th class="custom-thead" >Jumlah</th>
+                                        <th class="custom-thead" >Status Peminjaman</th>
+                                        <th class="custom-thead" >Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if (count($monitoring) == 0)
+                                        <td colspan="6">Tidak Ada Data</td>
+                                    @endif
                                     @foreach ($monitoring as $key=> $item)
                                     <tr class="align-middle">
                                         <td>{{$key + 1}}</td>

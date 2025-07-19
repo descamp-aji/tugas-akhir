@@ -49,7 +49,7 @@
             @if (session('danger'))
                 <x-flash-message type="danger" :message="session('danger')" />
             @endif
-            <div class="card border-primary">
+            <div class="card border-custom">
                 <div class="card-body">
                     <div class="row">
                         <div class="col d-flex align-items-center">
@@ -62,20 +62,20 @@
                     <div class="row mt-3">
                         <div class="col">
                             <table id="confirmationTable" class="table table-bordered table-hover">
-                                <thead class="text-center table-primary">
+                                <thead class="text-center">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Peminjaman</th>
-                                        <th>Surat Peminjaman</th>
-                                        <th>Tanggal Surat</th>
-                                        <th>Jumlah</th>
-                                        <th style="width:160px">Aksi</th>
+                                        <th class="custom-thead">No</th>
+                                        <th class="custom-thead">Nama Peminjaman</th>
+                                        <th class="custom-thead">Surat Peminjaman</th>
+                                        <th class="custom-thead">Tanggal Surat</th>
+                                        <th class="custom-thead">Jumlah</th>
+                                        <th class="custom-thead" style="width:160px">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
                                     @if (count($peminjaman)==0)
                                         <tr>
-                                            <td colspan="6">Tidak Ada Data</td>
+                                            <td colspan="6">Tidak ada data</td>
                                         </tr>
                                     @endif
                                     @foreach ($peminjaman as $key => $item)

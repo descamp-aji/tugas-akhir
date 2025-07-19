@@ -10,7 +10,7 @@ use Livewire\Attributes\Title;
 
 class CariDokumen extends Component
 {
-    #[Title('Peminjaman')]
+    #[Title('Cari Dokumen')]
 
     public $key_word;
     public $kriteria;
@@ -20,6 +20,7 @@ class CariDokumen extends Component
     public $no_lhp;
     public $tgl_lhp;
     public $kode_riksa;
+    public $deskripsi_kode_riksa;
     public $peminjam;
     public $cart=[];
     public $documents=[];
@@ -112,6 +113,7 @@ class CariDokumen extends Component
         $this->no_lhp= $detail_data["no_lhp"];
         $this->tgl_lhp= $detail_data["tgl_lhp"];
         $this->kode_riksa= $detail_data["kode_riksa_id"];
+        $this->deskripsi_kode_riksa= $detail_data->kode_riksa->deskripsi;
         $this->masa_awal= $detail_data["masa_pajak_awal"];
         $this->masa_akhir= $detail_data["masa_pajak_akhir"];
     }

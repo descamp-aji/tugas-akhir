@@ -47,12 +47,13 @@
         alt="User Profile"
       />
       <div class="user-info">
-        <div class="name"><a href="{{route('profile', auth()->user()->id )}}"> {{auth()->user()->name}} </a></div>
+        <div class="name"><a href="#"> {{auth()->user()->name}} </a></div>
         <div class="status">
           <hr style="margin-block: 5px">
           <span>
             <p style="margin: 0">
-                {{auth()->user()->role == 'admin' ? 'Administrator' : 'Regular User'}}
+                <span class="badge text-bg-dark">{{auth()->user()->role == 'admin' ? 'Administrator' : 'Regular User'}}</span><br>
+                {{auth()->user()->seksi->deskripsi}}
             </p>
           </span>
         </div>
@@ -65,7 +66,7 @@
     <div class="container">
       <div class="row d-flex align-items-center">
         <div class="col">
-          <h6 class="fw-bold">Hallo!! Have a nice day</h6>
+          <h6 class="fw-bold">Hallo! Have a nice day</h6>
           <h6 style="margin:0px">{{date('l, F j, Y')}}</h6>
         </div>
         <div class="col d-flex justify-content-end">

@@ -10,12 +10,12 @@
                         <div class="col">
                             <div class="table-responsive" style="max-width: 100%;">
                                 <table id="taransactionTable" class="table table-bordered table-hover">
-                                    <thead class="text-center table-primary">
+                                    <thead class="text-center">
                                         <tr>
-                                            <th>No</th>
-                                            <th>NPWP</th>
-                                            <th>Nama WP</th>
-                                            <th>Nomor Dokumen</th>
+                                            <th class="custom-thead">No</th>
+                                            <th class="custom-thead">NPWP</th>
+                                            <th class="custom-thead">Nama WP</th>
+                                            <th class="custom-thead">Nomor Dokumen</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">

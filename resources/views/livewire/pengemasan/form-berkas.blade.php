@@ -40,16 +40,16 @@
                                 <table id="taransactionTable" style="table-layout: fixed;" class="table table-bordered table-hover text-center">
                                     <thead class="table-secondary">
                                         <tr>
-                                            <th style="width: 50px;">No</th>
-                                            <th style="width: 150px;">NPWP</th>
-                                            <th style="width: 200px;">Nama Wajib Pajak</th>
-                                            <th style="width: 270px;">Nomor LHP</th>
-                                            <th style="width: 150px;">Tanggal LHP</th>
-                                            <th style="width: 150px;">Masa Pajak</th>
-                                            <th style="width: 100px;">Kode Riksa</th>
-                                            <th style="width: 150px;">Kemasan</th>
-                                            <th style="width: 150px;">Status</th>
-                                            <th style="width: 120px">Aksi</th>
+                                            <th class="custom-thead" style="width: 50px;">No</th>
+                                            <th class="custom-thead" style="width: 150px;">NPWP</th>
+                                            <th class="custom-thead" style="width: 200px;">Nama Wajib Pajak</th>
+                                            <th class="custom-thead" style="width: 270px;">Nomor LHP</th>
+                                            <th class="custom-thead" style="width: 150px;">Tanggal LHP</th>
+                                            <th class="custom-thead" style="width: 150px;">Masa Pajak</th>
+                                            <th class="custom-thead" style="width: 100px;">Kode Riksa</th>
+                                            <th class="custom-thead" style="width: 150px;">Kemasan</th>
+                                            <th class="custom-thead" style="width: 150px;">Status</th>
+                                            <th class="custom-thead" style="width: 120px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,7 +60,7 @@
                                         @endif
                                         @foreach ($berkas as $key => $item)
                                         <tr class="align-middle">
-                                            <td>{{$key + 1}}</td>
+                                            <td>{{$berkas->firstItem() + $key}}</td>
                                             <td>{{$item->wajib_pajak_id}}</td>
                                             <td>{{$item->wajib_pajak->name}}</td>
                                             <td>{{$item->no_lhp}}</td>

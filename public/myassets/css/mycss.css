@@ -254,3 +254,8 @@ body {
     .regist-bg{
         background-color: var(--grey-lighter);
     }
+
+    thead .custom-thead {
+    background-color: #8b6d5c ;
+    color: white; /* agar teks kontras */
+    }

@@ -2,7 +2,7 @@
     @include('livewire.transaction.detail-transaction')
     <div class="row mt-3">
         <div class="col">
-            <div class="card border-primary">
+            <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col d-flex align-items-center">
@@ -15,15 +15,15 @@
                     <div class="row mt-3">
                         <div class="col">
                             <table id="taransactionTable" class="table table-bordered table-hover text-center">
-                                <thead class="table-primary">
+                                <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Surat Peminjaman</th>
-                                        <th>Jatuh Tempo</th>
-                                        <th>Sisa Hari</th>
-                                        <th>Jumlah</th>
-                                        <th>Status Peminjaman</th>
-                                        <th>Aksi</th>
+                                        <th class="custom-thead">No</th>
+                                        <th class="custom-thead">Surat Peminjaman</th>
+                                        <th class="custom-thead">Jatuh Tempo</th>
+                                        <th class="custom-thead">Sisa Hari</th>
+                                        <th class="custom-thead">Jumlah</th>
+                                        <th class="custom-thead">Status Peminjaman</th>
+                                        <th class="custom-thead">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,7 +37,7 @@
                                     @endphp
                                     @if (count($peminjaman)==0)
                                         <tr>
-                                            <td colspan="7">Tidak ada Data</td>
+                                            <td colspan="7">Tidak ada data</td>
                                         </tr>
                                     @endif
                                     @foreach ($peminjaman as $key => $item)

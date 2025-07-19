@@ -28,12 +28,12 @@
                                 <tbody>
                                     @if (count($history)==0)
                                         <tr>
-                                            <td colspan="7">Tidak Ada Data</td>
+                                            <td colspan="7">Tidak ada data</td>
                                         </tr>
                                     @endif
                                     @foreach ($history as $key => $item)
                                     <tr class="align-middle">
-                                        <td>{{$key + 1}}</td>
+                                        <td>{{$history->firstItem() + $key}}</td>
                                         <td>{{$item->no_surat}}</td>
                                         <td>{{date('d F Y', strtotime($item->tgl_surat))}}</td>
                                         <td>{{count($item->transaction_dtl)}}</td>

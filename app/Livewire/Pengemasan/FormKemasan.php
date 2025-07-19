@@ -4,9 +4,15 @@ namespace App\Livewire\Pengemasan;
 
 use App\Models\Kemasan;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Livewire\Attributes\Title;
+
 
 class FormKemasan extends Component
 {
+    use WithPagination;
+    #[Title('Input Kemasan')]
+
     public $rak;
     public $baris;
     public $kolom;
