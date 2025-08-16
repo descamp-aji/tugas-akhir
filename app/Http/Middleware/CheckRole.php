@@ -18,7 +18,7 @@ class CheckRole
         if (!$request->user() || $request->user()->role !== $role) {
             // Bisa ganti dengan redirect kalau ingin halaman khusus misal:
             // return redirect('/unauthorized');
-            abort(403, 'Unauthorized');
+            abort(403, 'Anda tidak berhak');
         }
         return $next($request);
     }

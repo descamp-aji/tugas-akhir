@@ -13,7 +13,7 @@
                     <form wire:submit="login" class="row">
                         @csrf
                         <div class="mb-3">
-                            <label for="nip" class="form-label">NIP Pegawai</label>
+                            <label for="nip" class="form-label">NIP</label>
                             <input
                             type="text"
                             class="form-control"

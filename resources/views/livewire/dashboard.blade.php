@@ -2,53 +2,53 @@
     @include('livewire.transaction.detail-confirmation')
     <div class="row mt-5">
         <div class="col-3">
-            <div class="card border-primary mb-3" style="max-width: 18rem;">
-                <div class="card-header bg-transparent border-primary text-dark text-center">
+            <div class="card mb-3" style="max-width: 18rem;">
+                <div class="card-header bg-transparent text-dark text-center">
                     <h5 class="card-title">Jumlah<br>Pengguna</h5>
                 </div>
                     <div class="card-body text-dark text-center">
                         <h2 class="card-title">{{count($users)}}</h2>
                     </div>
-                <div class="card-footer bg-transparent border-primary text-dark text-center">
+                <div class="card-footer bg-transparent text-dark text-center">
                     <i class="bi bi-people"></i>
                 </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="card border-success mb-3" style="max-width: 18rem;">
-                <div class="card-header bg-transparent border-success text-dark text-center">
+            <div class="card mb-3" style="max-width: 18rem;">
+                <div class="card-header bg-transparent text-dark text-center">
                     <h5 class="card-title">Berkas<br>Tersedia</h5>
                 </div>
                     <div class="card-body text-dark text-center">
                         <h2 class="card-title">{{count($berkas)}}</h2>
                     </div>
-                <div class="card-footer bg-transparent border-success text-dark text-center">
+                <div class="card-footer bg-transparent text-dark text-center">
                     <i class="bi bi-file-earmark-text"></i>
                 </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="card border-danger mb-3" style="max-width: 18rem;">
-                <div class="card-header bg-transparent border-danger text-dark text-center">
+            <div class="card mb-3" style="max-width: 18rem;">
+                <div class="card-header bg-transparent text-dark text-center">
                     <h5 class="card-title ">Menunggu<br>Pengembalian</h5>
                 </div>
                     <div class="card-body text-dark text-center">
                         <h2 class="card-title">{{count($pengembalian)}}</h2>
                     </div>
-                <div class="card-footer bg-transparent border-danger text-dark text-center">
+                <div class="card-footer bg-transparent text-dark text-center">
                     <i class="bi bi-arrow-counterclockwise"></i>
                 </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="card border-warning mb-3" style="max-width: 18rem;">
-                <div class="card-header bg-transparent border-warning text-dark text-center">
+            <div class="card mb-3" style="max-width: 18rem;">
+                <div class="card-header bg-transparent text-dark text-center">
                     <h5 class="card-title ">Persetujuan<br>Peminjaman</h5>
                 </div>
                     <div class="card-body text-dark text-center">
                         <h2 class="card-title">{{count($persetujuan)}}</h2>
                     </div>
-                <div class="card-footer bg-transparent border-warning text-dark text-center">
+                <div class="card-footer bg-transparent text-dark text-center">
                     <i class="bi bi-bag-check"></i>
                 </div>
             </div>

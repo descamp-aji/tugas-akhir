@@ -5,7 +5,7 @@
                 <div class="col-10 text-center">
                     <img src="{{asset('myassets/img/logo.png')}}" alt="logo" style="width: 150px">
                     <h2 style="font-weight: 700">DocuTrack</h2>
-                    <p>DocuTrack merupakan aplikasi peminjaman berkas yang dirancang untuk memudahkan proses pengelolaan peminjaman dan pengemasan berkas secara terorganisir dan efisien.</p>
+                    <p>Aplikasi manajemen berkas yang dirancang untuk memudahkan proses pengelolaan peminjaman dan pengemasan berkas secara terorganisir dan efisien.</p>
                 </div>
             </div>
             <div class="row mt-5">

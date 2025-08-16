@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="col d-flex align-items-center">
-                                <h6 class="fw-bold">Pencarian Pengguna</h6>
+                                <h6 class="fw-bold">Daftar Pengguna</h6>
                             </div>
                         </div>
                     </div>
